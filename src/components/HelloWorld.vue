@@ -1,7 +1,22 @@
 <template>
   <v-container>
-    <h1>{{nextNum}}</h1>
-    <h1>{{countDown}}</h1>
+    <div class="d-flex justify-center">
+      
+    <v-chip
+      class="ma-2 pa-7"
+      color="green"
+      outlined
+    >
+    <h1>Next number: {{nextNum}}</h1>
+    </v-chip>
+    <v-chip
+      class="ma-2 pa-7"
+      color="red"
+      text-color="white"
+    >
+    <h1>{{("000" + countMin).slice(-2)}}:{{("000" + countSecond).slice(-2)}}</h1>
+    </v-chip>
+    </div>
     <div class="d-flex justify-center">
       <div v-for="row in sizeNums" :key="row">
         <v-btn v-for="col in sizeNums" :key="`${row}-${col}`"
@@ -24,7 +39,8 @@ export default Vue.extend({
       sizeNums: 10,
       array: [],
       numbersSelected: [],
-      countDown: 10
+      countMin: 0,
+      countSecond: 0,
     }
   },
   created() {
@@ -40,12 +56,15 @@ export default Vue.extend({
   },
   methods: {
     countDownTimer() {
-      if (this.countDown > 0) {
-        setTimeout(() => {
-          this.countDown -= 1
-          this.countDownTimer()
-        }, 1000)
-      }
+      setTimeout(() => {
+        if (this.countSecond == 59) {
+          this.countSecond = 0;
+          this.countMin++;
+        } else {
+          this.countSecond++
+        }
+        this.countDownTimer()
+      }, 1000)
     },
 
     getColorBtn(num) {
@@ -78,8 +97,6 @@ export default Vue.extend({
         [array[currentIndex], array[randomIndex]] = [
           array[randomIndex], array[currentIndex]];
       }
-      console.log('array', array);
-
       this.array = array;
     }
 
