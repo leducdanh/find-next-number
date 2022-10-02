@@ -34,7 +34,7 @@ export default Vue.extend({
       }
     })
     this.array = Array.from({ length: this.sizeNums * this.sizeNums }, (_, i) => i + 1);
-    // this.shuffle();
+    this.shuffle();
     this.countDownTimer()
 
   },
