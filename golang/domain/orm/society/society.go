@@ -19,7 +19,7 @@ type SocietyOrm struct {
 func (s *SocietyOrm) NewsocietyOrm() {
 	g := g_.Gorm{}
 	s.db = g.NewDb()[0]
-
+	s.db.AutoMigrate(&society.Society{})
 }
 
 func (s *SocietyOrm) GetAll() ([]*society.Society, error) {

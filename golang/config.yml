@@ -2,8 +2,8 @@ appname: ami-back
 port: :8000
 
 db:
-    use: mysql
-    mysql:
+    use: postgres
+    PostGres:
         -   enabled: true
             host: localhost
             port: 3306
