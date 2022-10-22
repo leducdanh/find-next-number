@@ -7,7 +7,7 @@
       color="green"
       outlined
     >
-    <h1>Next number: {{nextNum}}</h1>
+    <h1>Find number: {{nextNum}}</h1>
     </v-chip>
     <v-chip
       class="ma-2 pa-7"
@@ -32,7 +32,7 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  name: 'HelloWorld',
+  name: 'GameOn',
   data() {
     return {
       nextNum: 1,
