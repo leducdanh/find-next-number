@@ -45,7 +45,7 @@ export default Vue.extend({
   },
   created() {
     window.addEventListener("keydown", function (e) {
-      if (e.keyCode === 114 || (e.ctrlKey && e.keyCode === 70)) {
+      if (e.code === 'F3' || (e.ctrlKey && e.code === 'KeyF')) {
         e.preventDefault();
       }
     })
