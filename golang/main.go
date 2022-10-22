@@ -8,9 +8,10 @@ import (
 
 func main() {
 	config := repository.Config{}
+	c, _ := config.NewConfig()
 
 	fmt.Println("Welcome to the webserver111")
 	e := routes.New()
 
-	e.Logger.Fatal(e.Start(config.Port))
+	e.Logger.Fatal(e.Start(c.Port))
 }

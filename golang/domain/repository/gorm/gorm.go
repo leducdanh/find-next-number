@@ -17,7 +17,7 @@ type Gorm struct {
 func (g *Gorm) NewDb() []*gorm.DB {
 	g.c = &repository.Config{}
 
-	c, _ := g.c.NewConfig()
+	c, _ := g.c.GetConfig()
 
 	arrayConnections := make([]*gorm.DB, 0)
 
