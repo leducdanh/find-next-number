@@ -1,4 +1,4 @@
-package society
+package user
 
 import (
 	"errors"
@@ -7,24 +7,24 @@ import (
 
 	"github.com/jinzhu/gorm"
 
-	"test-github/domain/entity/society"
+	"test-github/domain/entity/user"
 )
 
 // db, _ := gorm.NewDb()
 
-type SocietyOrm struct {
+type UserOrm struct {
 	db *gorm.DB
 }
 
-func (s *SocietyOrm) NewsocietyOrm() {
+func (s *UserOrm) NewUserOrm() {
 	g := g_.Gorm{}
 	s.db = g.NewDb()[0]
-	s.db.AutoMigrate(&society.Society{})
+	s.db.AutoMigrate(&user.User{})
 }
 
-func (s *SocietyOrm) GetAll() ([]*society.Society, error) {
+func (s *UserOrm) GetAll() ([]*user.User, error) {
 
-	societies := make([]*society.Society, 0)
+	societies := make([]*user.User, 0)
 
 	if s.db.Find(&societies).Error != nil {
 		return nil, errors.New("Datacenter not found")

@@ -1,21 +1,21 @@
 package controller
 
 import (
-	"test-github/domain/service/society"
+	"test-github/domain/service/user"
 
 	"github.com/labstack/echo/v4"
 )
 
 type Controller struct {
-	society *society.SocietyService
+	user *user.UserService
 }
 
-func (c *Controller) NewsocietyController() {
-	c.society = &society.SocietyService{}
-	c.society.NewsocietyOrm()
+func (c *Controller) NewUserController() {
+	c.user = &user.UserService{}
+	c.user.NewUserOrm()
 }
 
 func (c *Controller) ApiGroup(g *echo.Group) {
-	c.NewsocietyController()
-	g.GET("/societies", c.society.ListAll)
+	c.NewUserController()
+	g.GET("/users", c.user.ListAll)
 }
