@@ -26,3 +26,13 @@ func (s *UserService) ListAll(c echo.Context) error {
 	s.resp.Data = societies
 	return c.JSON(http.StatusOK, s.resp)
 }
+
+func (s *UserService) SignIn(c echo.Context) error {
+	user, err := s.orm.PostUser(c)
+	if err != nil {
+
+		return c.JSON(http.StatusBadRequest, err)
+	}
+
+	return c.JSON(http.StatusOK, user)
+}
