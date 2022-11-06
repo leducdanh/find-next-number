@@ -18,4 +18,5 @@ func (c *Controller) NewUserController() {
 func (c *Controller) ApiGroup(g *echo.Group) {
 	c.NewUserController()
 	g.GET("/users", c.user.ListAll)
+	g.POST("/sign-in", c.user.SignIn)
 }

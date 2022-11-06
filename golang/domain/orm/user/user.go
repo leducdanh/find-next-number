@@ -2,10 +2,12 @@ package user
 
 import (
 	"errors"
+	"time"
 
 	g_ "test-github/domain/repository/gorm"
 
 	"github.com/jinzhu/gorm"
+	"github.com/labstack/echo/v4"
 
 	"test-github/domain/entity/user"
 )
@@ -24,11 +26,28 @@ func (s *UserOrm) NewUserOrm() {
 
 func (s *UserOrm) GetAll() ([]*user.User, error) {
 
-	societies := make([]*user.User, 0)
+	users := make([]*user.User, 0)
 
-	if s.db.Find(&societies).Error != nil {
+	if s.db.Find(&users).Error != nil {
 		return nil, errors.New("Datacenter not found")
 	}
 
-	return societies, nil
+	return users, nil
+}
+
+func (s *UserOrm) PostUser(c echo.Context) (interface{}, error) {
+	var user user.User
+	err := c.Bind(&user)
+	if err != nil {
+		return nil, err
+	}
+	user.CretaeAt = time.Now()
+	user.UpdateAt = time.Now()
+
+	result := s.db.Create(&user) // pass pointer of data to Create
+	if result.Error != nil {
+		return nil, errors.New("Create fail")
+	}
+
+	return result, nil
 }
