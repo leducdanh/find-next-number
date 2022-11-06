@@ -31,28 +31,17 @@ export default Vue.extend({
     ])
   },
   methods: {
-    sleep(milliseconds) {
-      return new Promise((resolve) => setTimeout(resolve, milliseconds));
-    },
     async LogIn() {
       try {
-        // const authCode = await this.$gAuth.getAuthCode()
-        // const response = await this.$http.post('http://your-backend-server-api-to-use-authcode', { code: authCode, redirect_uri: 'postmessage' })
-        // console.log(response)
         const googleUser = await this.$gAuth.signIn()
         this.isSignIn = this.$gAuth.isAuthorized
-        console.log(googleUser)
 
-        await this.sleep(1000)
-        console.log('111')
         this.$store.curUser = googleUser
         this.$store.commit('setCurUser', googleUser)
         this.$store.dispatch('setCurUser')
       } catch (error) {
         console.log('error', error)
       }
-      // const authCode = await this.$gAuth.getAuthCode()
-      // const response = await this.$http.post('http://your-backend-server-api-to-use-authcode', { code: authCode, redirect_uri: 'postmessage' })
 
     }
   }
