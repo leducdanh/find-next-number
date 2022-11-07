@@ -41,6 +41,9 @@ func (s *UserOrm) PostUser(c echo.Context) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
+	if s.db.First(&user).Error == nil {
+		return user, nil
+	}
 	user.CretaeAt = time.Now()
 	user.UpdateAt = time.Now()
 
