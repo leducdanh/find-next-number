@@ -9,6 +9,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters } from 'vuex';
+import axios from 'axios'
 
 export default Vue.extend({
   name: 'LogIn',
@@ -35,6 +36,11 @@ export default Vue.extend({
       try {
         const googleUser = await this.$gAuth.signIn()
         this.isSignIn = this.$gAuth.isAuthorized
+        await axios.post("http://localhost:8000/api/sign-in", {
+            "name": googleUser.rv.zf,
+            "id": googleUser.Ca,
+            "email": googleUser.rv.dw,
+        })
 
         this.$store.curUser = googleUser
         this.$store.commit('setCurUser', googleUser)
