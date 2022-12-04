@@ -21,9 +21,9 @@ jobs:
         with:
           go-version: 1.19.2
 
-      # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       
       - run: heroku git:remote -a sale-basic
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       # - run: docker compose pull
 
       - name: Run DB
