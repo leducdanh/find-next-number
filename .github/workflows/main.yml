@@ -36,6 +36,7 @@ jobs:
 
       - name: Run DB
         run: |
+          cd golang
           docker compose up -d
 
       - name: Run BE
