@@ -10,36 +10,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           branch: "master"
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "sale-basic" #Must be unique 
           heroku_email: "danh2331997@gmail.com"
           appdir: "golang"
-      - name: Set up go
-        uses: actions/setup-go@v3
-        with:
-          go-version: 1.19.2
+      # - name: Set up go
+      #   uses: actions/setup-go@v3
+      #   with:
+      #     go-version: 1.19.2
 
       
       - run: heroku git:remote -a sale-basic
-      # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       - run: |
           heroku git:push master --force
       # - run: docker compose pull
 
-      - name: Inslall docker compose
-        run: |
-          sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-          sudo chmod +x /usr/local/bin/docker-compose
-          docker-compose --version
+      # - name: Inslall docker compose
+      #   run: |
+      #     sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+      #     sudo chmod +x /usr/local/bin/docker-compose
+      #     docker-compose --version
 
-      - name: Run DB
-        run: |
-          cd golang
-          docker compose up -d
+      # - name: Run DB
+      #   run: |
+      #     cd golang
+      #     docker compose up -d
 
-      - name: Run BE
-        run: |
-          cd golang
-          go run main.go
+      # - name: Run BE
+      #   run: |
+      #     cd golang
+      #     go run main.go
