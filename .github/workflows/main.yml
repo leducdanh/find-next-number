@@ -21,6 +21,8 @@ jobs:
         with:
           go-version: 1.19.2
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      
+      - run: git push heroku HEAD:refs/heads/main --force
       - run: docker compose pull
 
       - name: Run DB
