@@ -16,4 +16,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "sale-basic" #Must be unique 
           heroku_email: "danh2331997@gmail.com"
-          appdir: "golang
+          appdir: "golang"
