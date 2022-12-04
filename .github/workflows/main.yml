@@ -23,7 +23,7 @@ jobs:
 
       
       - run: heroku git:remote -a sale-basic
-      # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       - run: |
           git push heroku master --force
       # - run: docker compose pull
