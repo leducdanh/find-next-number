@@ -41,4 +41,5 @@ jobs:
 
       - name: Run BE
         run: |
+          cd golang
           go run main.go
