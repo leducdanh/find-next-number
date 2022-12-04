@@ -41,4 +41,4 @@ jobs:
 
       - name: Run BE
         run: |
-          go main.go
+          go run main.go
